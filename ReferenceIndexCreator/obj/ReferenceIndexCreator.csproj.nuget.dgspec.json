@@ -1,0 +1,146 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Code Project\\Subrip\\ReferenceIndexCreator\\ReferenceIndexCreator.csproj": {}
+  },
+  "projects": {
+    "D:\\Code Project\\HSK-5.0\\DomainServices\\HSKDomainServices.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Code Project\\HSK-5.0\\DomainServices\\HSKDomainServices.csproj",
+        "projectName": "HSKDomainServices",
+        "projectPath": "D:\\Code Project\\HSK-5.0\\DomainServices\\HSKDomainServices.csproj",
+        "frameworks": {
+          "net461": {
+            "projectReferences": {
+              "D:\\Code Project\\HSK-5.0\\Domain\\HSKDomain.csproj": {
+                "projectPath": "D:\\Code Project\\HSK-5.0\\Domain\\HSKDomain.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net461": {}
+      }
+    },
+    "D:\\Code Project\\HSK-5.0\\Domain\\HSKDomain.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Code Project\\HSK-5.0\\Domain\\HSKDomain.csproj",
+        "projectName": "HSKDomain",
+        "projectPath": "D:\\Code Project\\HSK-5.0\\Domain\\HSKDomain.csproj"
+      },
+      "frameworks": {
+        "net461": {}
+      }
+    },
+    "D:\\Code Project\\Subrip\\Domain\\SubripDomain.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Code Project\\Subrip\\Domain\\SubripDomain.csproj",
+        "projectName": "SubripDomain",
+        "projectPath": "D:\\Code Project\\Subrip\\Domain\\SubripDomain.csproj"
+      },
+      "frameworks": {
+        "net461": {}
+      }
+    },
+    "D:\\Code Project\\Subrip\\ReferenceIndexCreator\\ReferenceIndexCreator.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Code Project\\Subrip\\ReferenceIndexCreator\\ReferenceIndexCreator.csproj",
+        "projectName": "ReferenceIndexCreator",
+        "projectPath": "D:\\Code Project\\Subrip\\ReferenceIndexCreator\\ReferenceIndexCreator.csproj",
+        "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
+        "outputPath": "D:\\Code Project\\Subrip\\ReferenceIndexCreator\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Code Project\\HSK-5.0\\DomainServices\\HSKDomainServices.csproj": {
+                "projectPath": "D:\\Code Project\\HSK-5.0\\DomainServices\\HSKDomainServices.csproj"
+              },
+              "D:\\Code Project\\HSK-5.0\\Domain\\HSKDomain.csproj": {
+                "projectPath": "D:\\Code Project\\HSK-5.0\\Domain\\HSKDomain.csproj"
+              },
+              "D:\\Code Project\\Subrip\\Services\\SubripServices.csproj": {
+                "projectPath": "D:\\Code Project\\Subrip\\Services\\SubripServices.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Bond.Core.CSharp": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "itext7": {
+              "target": "Package",
+              "version": "[7.1.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Code Project\\Subrip\\Services\\SubripServices.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Code Project\\Subrip\\Services\\SubripServices.csproj",
+        "projectName": "SubripServices",
+        "projectPath": "D:\\Code Project\\Subrip\\Services\\SubripServices.csproj",
+        "frameworks": {
+          "net461": {
+            "projectReferences": {
+              "D:\\Code Project\\Subrip\\Domain\\SubripDomain.csproj": {
+                "projectPath": "D:\\Code Project\\Subrip\\Domain\\SubripDomain.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net461": {}
+      }
+    }
+  }
+}

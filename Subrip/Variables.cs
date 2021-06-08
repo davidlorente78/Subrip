@@ -14,7 +14,8 @@ namespace Subrip
         public static string HomePath2 = @"C:\Users\Sibo David\Desktop\Panda\SubRip\";
         public static string Environment = "Home"; //Write Home when there.
 
-        public static string datasetpath = @"C:\Users\David\Desktop\RecogZi\dataset.csv";      
+        public static string datasetpath = @"C:\Users\David\Desktop\RecogZi\dataset.csv";
+        public static string datasetimagespath = @"C:\Users\David\Desktop\RecogZi\Images\";
 
     }
 }

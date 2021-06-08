@@ -15,3 +15,12 @@ C:\Users\David\Desktop\Subrip\Services\obj\Debug\SubripServices.csproj.CoreCompi
 C:\Users\David\Desktop\Subrip\Services\obj\Debug\SubripServices.csproj.CopyComplete
 C:\Users\David\Desktop\Subrip\Services\obj\Debug\SubripServices.dll
 C:\Users\David\Desktop\Subrip\Services\obj\Debug\SubripServices.pdb
+D:\Code Project\Subrip\Services\bin\Debug\SubripServices.dll
+D:\Code Project\Subrip\Services\bin\Debug\SubripServices.pdb
+D:\Code Project\Subrip\Services\bin\Debug\SubripDomain.dll
+D:\Code Project\Subrip\Services\bin\Debug\SubripDomain.pdb
+D:\Code Project\Subrip\Services\obj\Debug\SubripServices.csprojAssemblyReference.cache
+D:\Code Project\Subrip\Services\obj\Debug\SubripServices.csproj.CoreCompileInputs.cache
+D:\Code Project\Subrip\Services\obj\Debug\SubripServices.csproj.CopyComplete
+D:\Code Project\Subrip\Services\obj\Debug\SubripServices.dll
+D:\Code Project\Subrip\Services\obj\Debug\SubripServices.pdb

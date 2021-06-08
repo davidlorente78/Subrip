@@ -24,6 +24,7 @@ namespace Subrip
 		public List<Segment> HorizontalSegments { get; set; } = new List<Segment>();
 		public List<Segment> VerticalSegments { get; set; } = new List<Segment>();
 		public List<Bitmap> CroppedBitmaps { get; set; } = new List<Bitmap>();
-		public List<Bitmap> CenteredBitmaps { get; set; } = new List<Bitmap>();
+		public List<Bitmap> ResizedBitmaps { get; set; } = new List<Bitmap>();
+        public List<Bitmap> CorrectedMarginBitmaps { get; set; } = new List<Bitmap>();
 	}
 }

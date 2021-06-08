@@ -1,4 +1,5 @@
 ﻿using DALReaders;
+using DomainServices;
 using HSK;
 using Recogzi;
 using Recogzi.FileWriters;
@@ -9,6 +10,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -85,7 +88,10 @@ namespace Subrip
 		Projection projectionBitMapFilter = new Projection();
 
 		Int32 numseg = 0; //Cursor para pintar en el panel 1 los detectados
-		public FormRip()
+
+        private readonly bool bcapture = true;
+
+        public FormRip()
 		{
 			InitializeComponent();
 			this.comboBoxScreen.SelectedIndex = 0;
@@ -97,10 +103,32 @@ namespace Subrip
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			Process();
+
+			if (!bcapture)
+			{
+				Process();
+			}
+			else {
+
+				FrameCapture();
+				}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private int numFrame = 0;
+        private void FrameCapture()
+        {
+
+			int Episode = 1;
+			numFrame++;
+			Bitmap bitmapFromScreen = BitmapService.BitmapFromScreen(CaptureArea.Width, CaptureArea.Height, CaptureArea.Left, CaptureArea.Top, this.comboBoxScreen.SelectedIndex);
+			pictureBox1.Image = bitmapFromScreen;
+
+			bitmapFromScreen.Save(@"D:\Addicted\" + Episode.ToString() + @"\" + numFrame.ToString() + ".jpg",ImageFormat.Jpeg);
+
+
+		}
+
+        private void button1_Click(object sender, EventArgs e)
 		{
 			Process();
 		}
@@ -141,17 +169,25 @@ namespace Subrip
 					projectionBitMapFilter.CroppedBitmaps = BitmapService.ExtractCropBitmaps(GroupedSegments, projectionBitMapFilter.Bitmap);
 
 
-					List<char> predictions = new List<char>();
-
 					foreach (Bitmap crop in projectionBitMapFilter.CroppedBitmaps)
 					{
-						Bitmap centered = BitmapService.GenerateCenteredBitmapfromCropped(crop, 32);
-						projectionBitMapFilter.CenteredBitmaps.Add(centered);
+						var margin = BitmapService.CorrectMargin(crop);
 
+						projectionBitMapFilter.CorrectedMarginBitmaps.Add(margin);
+					}
 
-						centered.Save(@"C:\Users\David\Desktop\Subrip\centered.bmp");
+										
+				
 
-						string zerosandones = DatasetGenerator.ToZerosOnesSequence(' ', centered);
+					List<char> predictions = new List<char>();
+
+					foreach (Bitmap bitmap in projectionBitMapFilter.CorrectedMarginBitmaps)
+					{
+						Bitmap resized = BitmapService.ResizeImage(bitmap, 32,32);
+
+						projectionBitMapFilter.ResizedBitmaps.Add(resized);
+
+						string zerosandones = DatasetGenerator.ToZerosOnesSequence(' ', resized);
 
 						var c = PredictionService.Predict(zerosandones);
 						predictions.Add(c);
@@ -159,7 +195,7 @@ namespace Subrip
 						x++;
 					}
 
-					CroppedBitmapsToScreen(projectionBitMapFilter.CenteredBitmaps);
+						BitmapsToScreen(projectionBitMapFilter.ResizedBitmaps);
 
 					AddTextBoxToScreen(projectionBitMapFilter.CroppedBitmaps.Count,predictions);
 
@@ -191,23 +227,25 @@ namespace Subrip
 			}
 		}
 
-		private void CroppedBitmapsToScreen(List<Bitmap> cropped)
+		private void BitmapsToScreen(List<Bitmap> cropped)
 		{
 			this.panel1.Controls.Clear();
+			numseg = 0;
 
 			foreach (Bitmap bitmap in cropped)
 			{
 
 				PictureBox pc = new PictureBox
 				{
-					BorderStyle = BorderStyle.None,
+					BorderStyle = BorderStyle.FixedSingle,
 					Height = 32,
 					Width = 32,
-					SizeMode = PictureBoxSizeMode.Normal,
+					SizeMode = PictureBoxSizeMode.StretchImage,
 
 					Top = 0,
 					Left = numseg * Convert.ToInt32(34), //80 pixels de separacion entre controles
-					Image = bitmap //BitmapService.ResizeImage(bitmap, 32)
+					Image = bitmap ,			
+					
 				};
 
 				this.panel1.Controls.Add(pc);
@@ -282,6 +320,7 @@ namespace Subrip
 
 			var textboxs = this.panel2.Controls;
 
+			int samples = 0;
 			foreach (TextBox tx in textboxs)
 			{
 				if (tx.Text != String.Empty)
@@ -289,17 +328,18 @@ namespace Subrip
 					//TO CHECK
 					var zi = tx.Text;
 					var i = Convert.ToInt32(tx.Name);
-					var bit = projectionBitMapFilter.CenteredBitmaps[i];
-
+					var bit = projectionBitMapFilter.ResizedBitmaps[i];
 					var sequence = DatasetGenerator.ToZerosOnesSequence(Convert.ToChar(zi), bit);
-					//string path = @"C:\Users\David\Desktop\RecogZi\dataset.csv";
+
+					projectionBitMapFilter.ResizedBitmaps[i].Save(Variables.datasetimagespath  + tx.Text + @".bmp");
+
 					FileWriter.AddLine(sequence, Variables.datasetpath);
 				}
 
 
 			}
 
-			MessageBox.Show("New samples have been added");
+			MessageBox.Show(samples + " new samples have been added");
 
 		}
 
@@ -307,11 +347,8 @@ namespace Subrip
         {
 			this.Hide();
 			Form1 form1 = new Form1();
-			form1.InstanceRef = this;
-			
+			form1.InstanceRef = this;			
 			form1.Show();
-
-
 		}
 
 		private void btnTextAnalysis_Click(object sender, EventArgs e)
@@ -640,7 +677,64 @@ namespace Subrip
 				boolDictionary = !boolDictionary;
 				Load_Included();
 			}
-		
 
+
+		private static List<Word> ToList(ArrayList arrayList)
+		{
+			List<Word> list = new List<Word>();
+			foreach (Word instance in arrayList)
+			{
+				list.Add(instance);
+			}
+			return list;
+		}
+
+
+		private void button3_Click_1(object sender, EventArgs e)
+        {
+            JPGGenerator();
+
+        }
+
+        private void JPGGenerator()
+        {
+            ListService service = new ListService(new Reader_HSK());
+
+            var includedWords = service.GetAllWords(1);
+
+            List<Word> arrayIncluded = ToList(includedWords);
+
+            int index = 1;
+
+            foreach (Word_HSK w in arrayIncluded.OrderBy(x => x.NumberPinyin))
+
+            {
+                //FANGSONG
+                //	KAITI
+                //	SIMHEI
+                //DengXian
+
+                string sIndex = NumeroCuadrado(index, 3);
+
+                BitmapService.GenerateBitmapfromFontChar(w.Character, "FangSong", FontStyle.Regular, sIndex);
+                BitmapService.GenerateBitmapfromFontChar(w.Character, "Kaiti", FontStyle.Regular, sIndex);
+
+                index++;
+
+
+            }
+        }
+
+        private string NumeroCuadrado(int index, int v)
+        {
+			string s = index.ToString();
+			string sIndex = string.Empty;
+
+			for (x = 0; x < v - s.Length; x++) sIndex = sIndex + "0";
+
+			sIndex = sIndex + s;
+
+			return sIndex;
+        }
     }
 }

@@ -68,3 +68,37 @@ C:\Users\David\Desktop\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel5.txt
 C:\Users\David\Desktop\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel6.txt
 C:\Users\David\Desktop\Subrip\Subrip\bin\Debug\DataFiles\Phrases\Phrases.txt
 C:\Users\David\Desktop\Subrip\Subrip\bin\Debug\DataFiles\Phrases\cedict_ts.u8
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel1.txt
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel2.txt
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel3.txt
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel4.txt
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel5.txt
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Levels\NewHSKLevel6.txt
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Phrases\Phrases.txt
+D:\Code Project\Subrip\Subrip\bin\Debug\DataFiles\Phrases\cedict_ts.u8
+D:\Code Project\Subrip\Subrip\bin\Debug\Subrip.exe.config
+D:\Code Project\Subrip\Subrip\bin\Debug\Subrip.exe
+D:\Code Project\Subrip\Subrip\bin\Debug\Subrip.pdb
+D:\Code Project\Subrip\Subrip\bin\Debug\DomainHSK.dll
+D:\Code Project\Subrip\Subrip\bin\Debug\DomainServicesHSK.dll
+D:\Code Project\Subrip\Subrip\bin\Debug\Recog.exe
+D:\Code Project\Subrip\Subrip\bin\Debug\SubripDomain.dll
+D:\Code Project\Subrip\Subrip\bin\Debug\SubripServices.dll
+D:\Code Project\Subrip\Subrip\bin\Debug\EntityFramework.dll
+D:\Code Project\Subrip\Subrip\bin\Debug\DomainServicesHSK.pdb
+D:\Code Project\Subrip\Subrip\bin\Debug\DomainHSK.pdb
+D:\Code Project\Subrip\Subrip\bin\Debug\DomainHSK.dll.config
+D:\Code Project\Subrip\Subrip\bin\Debug\Recog.pdb
+D:\Code Project\Subrip\Subrip\bin\Debug\Recog.exe.config
+D:\Code Project\Subrip\Subrip\bin\Debug\SubripDomain.pdb
+D:\Code Project\Subrip\Subrip\bin\Debug\SubripServices.pdb
+D:\Code Project\Subrip\Subrip\bin\Debug\EntityFramework.xml
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.csprojAssemblyReference.cache
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.csproj.ResolveComReference.cache
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.FormRip.resources
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.Properties.Resources.resources
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.csproj.GenerateResource.cache
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.csproj.CoreCompileInputs.cache
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.csproj.CopyComplete
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.exe
+D:\Code Project\Subrip\Subrip\obj\Debug\Subrip.pdb

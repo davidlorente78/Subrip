@@ -101,6 +101,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\HSK-5.0\DomainServices\HSKDomainServices.csproj">
+      <Project>{EC92C5B8-3691-455A-A4B8-B46670AB0260}</Project>
+      <Name>HSKDomainServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HSK-5.0\Domain\HSKDomain.csproj">
       <Project>{f863c3c1-f759-44ed-8776-9d380dcff4cf}</Project>
       <Name>HSKDomain</Name>
