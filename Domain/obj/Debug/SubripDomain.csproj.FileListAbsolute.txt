@@ -11,7 +11,7 @@ C:\Users\David\Desktop\Subrip\Domain\obj\Debug\SubripDomain.pdb
 C:\Users\David\Desktop\Subrip\Domain\obj\Debug\SubripDomain.csprojAssemblyReference.cache
 D:\Code Project\Subrip\Domain\bin\Debug\SubripDomain.dll
 D:\Code Project\Subrip\Domain\bin\Debug\SubripDomain.pdb
-D:\Code Project\Subrip\Domain\obj\Debug\SubripDomain.csprojAssemblyReference.cache
 D:\Code Project\Subrip\Domain\obj\Debug\SubripDomain.csproj.CoreCompileInputs.cache
 D:\Code Project\Subrip\Domain\obj\Debug\SubripDomain.dll
 D:\Code Project\Subrip\Domain\obj\Debug\SubripDomain.pdb
+D:\Code Project\Subrip\Domain\obj\Debug\SubripDomain.csprojAssemblyReference.cache

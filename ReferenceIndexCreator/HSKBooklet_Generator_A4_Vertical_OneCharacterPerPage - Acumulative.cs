@@ -1,12 +1,14 @@
 ﻿using DALReaders;
 using DomainServices;
 using HSK;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -40,7 +42,7 @@ namespace ReferenceIndexCreator
         int Maxrepeticion = 0;
 
         int Level = 1;
-        string pathLevel;
+        string pathLevel; //Se usa como indicador de nivel combinado en los ficheros de salida.  Combinado nivel 1 2 3 sera 123;
         public HSKBooklet_Generator_A4_Vertical_OneCharacterPerPage_Acumulative(int Level)
         {
 
@@ -211,7 +213,6 @@ namespace ReferenceIndexCreator
             iText.Layout.Element.Image MiniCaracter = new iText.Layout.Element.Image(ImageDataFactory.Create(path));
             MiniCaracter.ScaleAbsolute(MiniCaracterSize, MiniCaracterSize);
             MiniCaracter.SetTextAlignment(TextAlignment.CENTER);
-            MiniCaracter.SetTextAlignment(TextAlignment.CENTER);
 
             for (int col = 0; col < MaxColumns; col++)
 
@@ -252,8 +253,7 @@ namespace ReferenceIndexCreator
                 {
                     repeticion++;
 
-                    Paragraph pGlobal = new Paragraph(word.Character + "\t (" + word.Pinyin + ") , " + word.Description).SetFont(fontKaiti).SetFontSize(10);
-
+                    Paragraph pGlobal = new Paragraph(word.Character + "\t (" + word.Pinyin + ") , " + word.Type + " , " + word.Description).SetFont(fontKaiti).SetFontSize(10);
 
                     pGlobals.Add(pGlobal);
 
@@ -346,7 +346,7 @@ namespace ReferenceIndexCreator
         {
             foreach (IElement iElement in table.GetChildren())
             {
-                ((Cell)iElement).SetBorder(iText.Layout.Borders.SolidBorder.NO_BORDER);
+                ((Cell)iElement).SetBorder(iText.Layout.Borders.Border.NO_BORDER);
             }
         }
 
@@ -373,9 +373,15 @@ namespace ReferenceIndexCreator
 
             //TABLA DE CONTENIDO
 
-            var DimensionesColumnas = new float[] { 5, 20, 20, 50, 10, 15 };
+            //Se añade el Tipo de palabra 
+            //Una columna mas. 
+            var DimensionesColumnas = new float[] { 5, 20, 20, 50, 5, 10, 15 };
             Table table = new Table(UnitValue.CreatePercentArray(DimensionesColumnas));
-            table.UseAllAvailableWidth();
+            float tablewidth = 95;
+            //table.UseAllAvailableWidth();
+            //Se ajusta el margen del indice a 90% de la pagina
+            table.SetWidth(UnitValue.CreatePercentValue(tablewidth));
+            table.SetMarginLeft(5);
 
             //TEST CON SOLO CINCO CARACTERES
             //includedChars.Clear();
@@ -434,6 +440,11 @@ namespace ReferenceIndexCreator
                         cell3.Add(new Paragraph(word.Description).SetFontSize(10).SetMarginLeft(20).SetMarginTop(SetMarginTopP).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE));
                         table.AddCell(cell3);
 
+                        Cell cellType = new Cell();
+                        cellType.Add(new Paragraph(word.Type).SetFontSize(10).SetMarginTop(SetMarginTopP).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE));
+                        table.AddCell(cellType);
+
+
                         Cell cell4 = new Cell();
                         cell4.Add(new Paragraph("HSK " + word.Level.ToString()).SetFontSize(10).SetMarginTop(SetMarginTopP).SetTextAlignment(TextAlignment.CENTER).SetVerticalAlignment(VerticalAlignment.MIDDLE));
                         table.AddCell(cell4);
@@ -455,7 +466,9 @@ namespace ReferenceIndexCreator
                             rowCount = 0;
 
                             table = new Table(UnitValue.CreatePercentArray(DimensionesColumnas));
-                            table.UseAllAvailableWidth();
+                            //table.UseAllAvailableWidth();
+                            //Se ajusta el margen del indice a 90% de la pagina
+                            table.SetWidth(UnitValue.CreatePercentValue(tablewidth));
                         }
                     }
                 }
@@ -468,8 +481,6 @@ namespace ReferenceIndexCreator
             PdfCanvas pdfCanvasend = new PdfCanvas(pdf.AddNewPage());
             Canvas canvasend = new Canvas(pdfCanvasend, pdf, document.GetPageEffectiveArea(pdf.GetDefaultPageSize()));
             canvasend.Add(table);
-
-
 
             //Se añade una pagina en blanco al lomo de caracteres solo si es impar 
             if (pdf.GetNumberOfPages() % 2 == 0)
@@ -490,7 +501,6 @@ namespace ReferenceIndexCreator
 
             //Hay que obtener caracter a caracter no las palabras TODO
 
-
             PdfWriter writer = new PdfWriter(@"D:\\HSKBooklet\" + this.pathLevel + "WordIndex.pdf");
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf, PageSize.A4);
@@ -501,10 +511,15 @@ namespace ReferenceIndexCreator
             document.SetFont(fontKaiti);
 
 
-            var dimensionsColumns = new float[] { 25, 20, 20, 50, 10, 15 };
+            var dimensionsColumns = new float[] { 25, 20, 20, 50, 5,10, 15 };
 
+
+            float tablewidth = 95;
             Table table = new Table(UnitValue.CreatePercentArray(dimensionsColumns));
-            table.UseAllAvailableWidth();
+            //table.UseAllAvailableWidth();
+            //Se ajusta el margen del indice a 90% de la pagina
+            table.SetWidth(UnitValue.CreatePercentValue(tablewidth));
+            table.SetMarginLeft(5);
 
             int rowCount = 0;
 
@@ -559,6 +574,10 @@ namespace ReferenceIndexCreator
                         cell3.Add(new Paragraph(word.Description).SetFontSize(10).SetMarginLeft(20).SetMarginTop(SetMarginTopP).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE));
                         table.AddCell(cell3);
 
+                        Cell cellType = new Cell();
+                        cellType.Add(new Paragraph(word.Type).SetFontSize(10).SetMarginTop(SetMarginTopP).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE));
+                        table.AddCell(cellType);
+
                         first = false;
 
                     }
@@ -581,6 +600,9 @@ namespace ReferenceIndexCreator
                         cell3.Add(new Paragraph(" ").SetFontSize(10).SetMarginLeft(20).SetMarginTop(SetMarginTopP).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE));
                         table.AddCell(cell3);
 
+                        Cell cellType = new Cell();
+                        cellType.Add(new Paragraph(" ").SetFontSize(10).SetMarginLeft(20).SetMarginTop(SetMarginTopP).SetTextAlignment(TextAlignment.LEFT).SetVerticalAlignment(VerticalAlignment.MIDDLE));
+                        table.AddCell(cellType);
 
                     }
 
@@ -602,16 +624,16 @@ namespace ReferenceIndexCreator
 
                         rowCount = 0;
                         table = new Table(UnitValue.CreatePercentArray(dimensionsColumns));
-                        table.UseAllAvailableWidth();
+
+                        //table.UseAllAvailableWidth();
+                        //Se ajusta el margen del indice a 90% de la pagina
+                        table.SetWidth(UnitValue.CreatePercentValue(tablewidth));
                     }
                 }
 
-
                 string sIndex = NumeroCuadrado(index, 3);
 
-
             }
-
 
             PdfCanvas pdfCanvasend = new PdfCanvas(pdf.AddNewPage());
             Canvas canvasend = new Canvas(pdfCanvasend, pdf, document.GetPageEffectiveArea(pdf.GetDefaultPageSize()));

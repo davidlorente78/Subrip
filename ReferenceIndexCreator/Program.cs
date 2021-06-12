@@ -9,19 +9,6 @@ namespace ReferenceIndexCreator
         static void Main(string[] args)
         {
 
-            Tools t = new Tools();
-            //var index = t.HSKIndex(3,true);
-
-
-            var copypastethisintoword = t.stringIndex(3,true);
-
-            //Utilizado para generar el Indice del Libro de Gramatica
-            var report1 = t.stringIndex(1, false);
-            var report2 = t.stringIndex(2, false);
-            var report3 = t.stringIndex(3, false);
-            var report4 = t.stringIndex(4, false);
-
-
 
             #region Cuadernos HSK por Nivel A4 Vertical 
             //bool Acumulative = false;
@@ -53,13 +40,29 @@ namespace ReferenceIndexCreator
             #endregion
 
 
-            for (int Level = 2; Level <= 3; Level++)
-            {
-                HSKBooklet_Generator_A4_Vertical_OneCharacterPerPage_Acumulative hSKBooklet_Generator = new HSKBooklet_Generator_A4_Vertical_OneCharacterPerPage_Acumulative(Level);
-                hSKBooklet_Generator.DocumentGenerator();
-                hSKBooklet_Generator.CharacterIndexGenerator();
-                hSKBooklet_Generator.WordIndexGenerator();
-            }
+            //Cambiarlo a to, from LevelTo, LevelFrom
+            //1
+            //2
+            //3
+            //4
+            //12
+            //123
+            //1234
+            //34
+
+            //for (int Level = 2; Level <= 3; Level++)
+            //{
+            //    HSKBooklet_Generator_A4_Vertical_OneCharacterPerPage_Acumulative hSKBooklet_Generator = new HSKBooklet_Generator_A4_Vertical_OneCharacterPerPage_Acumulative(Level);
+            //    hSKBooklet_Generator.DocumentGenerator();
+            //    hSKBooklet_Generator.CharacterIndexGenerator();
+            //    hSKBooklet_Generator.WordIndexGenerator();
+            //}
+
+            KhmerBookletGenerator khmerBookletGenerator = new KhmerBookletGenerator();
+
+            khmerBookletGenerator.GenerateConsonants();
+            khmerBookletGenerator.GenerateDependent();
+            khmerBookletGenerator.GenerateIndependent();
 
 
         }

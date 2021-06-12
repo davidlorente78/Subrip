@@ -17,7 +17,9 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MachineLearningRecogzi", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recog", "..\Recogzi\RecogZi\Recogzi\Recog\Recog.csproj", "{E7603081-1718-401A-8196-6538BB5D66AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceIndexCreator", "ReferenceIndexCreator\ReferenceIndexCreator.csproj", "{87626B59-1AE2-4288-B746-45AAE9D5F509}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReferenceIndexCreator", "ReferenceIndexCreator\ReferenceIndexCreator.csproj", "{87626B59-1AE2-4288-B746-45AAE9D5F509}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexGenerator", "IndexGenerator\IndexGenerator.csproj", "{6741B23B-F379-4D3B-8FA7-8DCE7222A5D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{87626B59-1AE2-4288-B746-45AAE9D5F509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87626B59-1AE2-4288-B746-45AAE9D5F509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87626B59-1AE2-4288-B746-45AAE9D5F509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6741B23B-F379-4D3B-8FA7-8DCE7222A5D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6741B23B-F379-4D3B-8FA7-8DCE7222A5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6741B23B-F379-4D3B-8FA7-8DCE7222A5D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6741B23B-F379-4D3B-8FA7-8DCE7222A5D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
